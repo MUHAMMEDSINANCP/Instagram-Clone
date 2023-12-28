@@ -2,7 +2,7 @@
 ## Instagram Clone
 An innovative Instagram-like application built using Flutter and Firebase, offering a responsive and dynamic user experience. Leveraging Provider for state management, this clone mimics Instagram's functionalities while providing a seamless interface.
 
-### Key Features:
+### Key Features :
 Responsive Design: Ensures a user-friendly experience across various devices.
 Flutter & Firebase: Utilizes Flutter for cross-platform compatibility and Firebase for backend services.
 Provider State Management: Efficient state handling for a smooth app experience.
