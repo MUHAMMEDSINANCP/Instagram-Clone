@@ -1,28 +1,31 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/firebase_options.dart';
 import 'package:instagram_clone/providers/user_provider.dart';
 import 'package:instagram_clone/responsive/mobile_screen_layout.dart';
 import 'package:instagram_clone/responsive/responsive_layout_screen.dart';
 import 'package:instagram_clone/responsive/web_screen_layout.dart';
 import 'package:instagram_clone/screen/login_screen.dart';
-import 'package:instagram_clone/screen/signup_screen.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(
-    name: 'Instagram Clone',
-    options: const FirebaseOptions(
-      apiKey: 'AIzaSyDsfOu3wmCEHRcWLizqCWx7UYuiNhBt_9M',
-      appId: '1:861358883809:web:79d388e31b558df0c408a0',
-      messagingSenderId: '861358883809',
-      projectId: 'instagram-clone-a75d4',
-      storageBucket: 'instagram-clone-a75d4.appspot.com',
-    ),
+    options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // await Firebase.initializeApp(
+  //   name: 'Instagram Clone',
+  //   options: const FirebaseOptions(
+  //     apiKey: 'AIzaSyDsfOu3wmCEHRcWLizqCWx7UYuiNhBt_9M',
+  //     appId: '1:861358883809:web:79d388e31b558df0c408a0',
+  //     messagingSenderId: '861358883809',
+  //     projectId: 'instagram-clone-a75d4',
+  //     storageBucket: 'instagram-clone-a75d4.appspot.com',
+  //   ),
+  // );
 
   runApp(const MyApp());
 }
