@@ -1,13 +1,14 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class CommentCard extends StatefulWidget {
   final snap;
-  const CommentCard({super.key,required this.snap});
+  const CommentCard({super.key, required this.snap});
 
   @override
   State<CommentCard> createState() => _CommentCardState();
-  
 }
 
 class _CommentCardState extends State<CommentCard> {
@@ -22,8 +23,8 @@ class _CommentCardState extends State<CommentCard> {
         children: [
           CircleAvatar(
             backgroundImage: NetworkImage(
-            widget.snap['profilePic'],
-                ),
+              widget.snap['profilePic'],
+            ),
             radius: 18,
           ),
           Expanded(
@@ -38,7 +39,7 @@ class _CommentCardState extends State<CommentCard> {
                   RichText(
                     text: TextSpan(children: [
                       TextSpan(
-                        text:  widget.snap['name'],
+                        text: widget.snap['name'],
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -49,11 +50,12 @@ class _CommentCardState extends State<CommentCard> {
                     ]),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 4),
+                    padding: const EdgeInsets.only(top: 4),
                     child: Text(
-                         DateFormat.yMMMd().format(widget.snap['datePublished'].toDate()),
-                      style:
-                    const       TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+                      DateFormat.yMMMd()
+                          .format(widget.snap['datePublished'].toDate()),
+                      style: const TextStyle(
+                          fontSize: 12, fontWeight: FontWeight.w400),
                     ),
                   )
                 ],
@@ -61,7 +63,7 @@ class _CommentCardState extends State<CommentCard> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: const Icon(
               Icons.favorite,
               size: 16,

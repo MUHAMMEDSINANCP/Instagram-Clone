@@ -20,7 +20,8 @@ class FeedScreen extends StatelessWidget {
                     : mobileBackgroundColor,
                 centerTitle: false,
                 title: ColorFiltered(
-                  colorFilter: ColorFilter.mode(primaryColor, BlendMode.srcIn),
+                  colorFilter:
+                      const ColorFilter.mode(primaryColor, BlendMode.srcIn),
                   child: SvgPicture.asset(
                     'assets/ic_instagram.svg',
                     height: 32,

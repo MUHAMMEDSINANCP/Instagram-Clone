@@ -1,5 +1,6 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/providers/user_provider.dart';
 import 'package:instagram_clone/resources/fire_store_methods.dart';
@@ -32,7 +33,7 @@ class _CommentScreenState extends State<CommentScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
-        title: Text('Comments'),
+        title: const Text('Comments'),
         centerTitle: false,
       ),
       bottomNavigationBar: SafeArea(
@@ -52,7 +53,7 @@ class _CommentScreenState extends State<CommentScreen> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 16, right: 8),
+                  padding: const EdgeInsets.only(left: 16, right: 8),
                   child: TextField(
                     controller: _commentController,
                     keyboardType: TextInputType.text,
@@ -105,8 +106,8 @@ class _CommentScreenState extends State<CommentScreen> {
           return ListView.builder(
             itemCount: (snapshot.data! as dynamic).docs.length,
             itemBuilder: ((context, index) => CommentCard(
-              snap : (snapshot.data! as dynamic).docs[index].data(),
-            )),
+                  snap: (snapshot.data! as dynamic).docs[index].data(),
+                )),
           );
         },
       ),

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -14,30 +16,24 @@ import '../responsive/web_screen_layout.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
-  
 
   @override
   State<SignUpScreen> createState() => _LoginScreenState();
 }
 
-
 class _LoginScreenState extends State<SignUpScreen> {
   @override
+  // ignore: override_on_non_overriding_member
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
-
-
- 
-
 
   Uint8List? _image;
   bool _isLoading = false;
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -70,12 +66,12 @@ class _LoginScreenState extends State<SignUpScreen> {
     if (res != 'success') {
       showSnackBar(res, context);
     } else {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const  ResponsiveLayout(
-                      webScreenLayout: WebScreenLayout(),
-                      mobileScreenLayout: MobileScreenLayout())
-              ),
-              );
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+            builder: (context) => const ResponsiveLayout(
+                webScreenLayout: WebScreenLayout(),
+                mobileScreenLayout: MobileScreenLayout())),
+      );
     }
   }
 
@@ -89,7 +85,7 @@ class _LoginScreenState extends State<SignUpScreen> {
     return Scaffold(
       body: SafeArea(
           child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 32),
+        padding: const EdgeInsets.symmetric(horizontal: 32),
         width: double.infinity,
         child: SingleChildScrollView(
           child: Column(
@@ -98,7 +94,8 @@ class _LoginScreenState extends State<SignUpScreen> {
               Container(),
               //svg image
               ColorFiltered(
-                colorFilter: ColorFilter.mode(primaryColor, BlendMode.srcIn),
+                colorFilter:
+                    const ColorFilter.mode(primaryColor, BlendMode.srcIn),
                 child: SvgPicture.asset(
                   'assets/ic_instagram.svg',
                   height: 64,
@@ -115,7 +112,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                           radius: 64,
                           backgroundImage: MemoryImage(_image!),
                         )
-                      : CircleAvatar(
+                      : const CircleAvatar(
                           radius: 64,
                           backgroundImage: NetworkImage(
                               'https://cdn2.vectorstock.com/i/1000x1000/17/61/male-avatar-profile-picture-vector-10211761.jpg'),
@@ -130,7 +127,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ), // text fiels input for username
               TextFieldInput(
@@ -198,22 +195,22 @@ class _LoginScreenState extends State<SignUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: const Text("Already a User? "),
                     padding: const EdgeInsets.symmetric(
                       vertical: 8,
                     ),
+                    child: const Text("Already a User? "),
                   ),
                   GestureDetector(
                     onTap: navigateToLogin,
                     child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8,
+                      ),
                       child: const Text(
                         "Log In",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8,
                       ),
                     ),
                   ),

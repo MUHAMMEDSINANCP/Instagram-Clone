@@ -1,5 +1,6 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/providers/user_provider.dart';
 import 'package:instagram_clone/resources/fire_store_methods.dart';
@@ -40,6 +41,7 @@ class _PostCardState extends State<PostCard> {
           .get();
       commentLength = snap.docs.length;
     } catch (e) {
+      // ignore: use_build_context_synchronously
       showSnackBar(e.toString(), context);
     }
     setState(() {});
@@ -78,14 +80,14 @@ class _PostCardState extends State<PostCard> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(left: 8),
+                    padding: const EdgeInsets.only(left: 8),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           widget.snap['username'],
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         )
@@ -125,7 +127,7 @@ class _PostCardState extends State<PostCard> {
                       ),
                     );
                   },
-                  icon: Icon(Icons.more_vert),
+                  icon: const Icon(Icons.more_vert),
                 ),
               ],
             ),
@@ -155,11 +157,6 @@ class _PostCardState extends State<PostCard> {
                   duration: const Duration(milliseconds: 200),
                   opacity: isLikeAnimating ? 1 : 0,
                   child: LikeAnimation(
-                    child: const Icon(
-                      Icons.favorite,
-                      color: Colors.white,
-                      size: 150,
-                    ),
                     isAnimating: isLikeAnimating,
                     duration: const Duration(
                       milliseconds: 400,
@@ -169,6 +166,11 @@ class _PostCardState extends State<PostCard> {
                         isLikeAnimating = false;
                       });
                     },
+                    child: const Icon(
+                      Icons.favorite,
+                      color: Colors.white,
+                      size: 150,
+                    ),
                   ),
                 ),
               ],
@@ -220,7 +222,7 @@ class _PostCardState extends State<PostCard> {
                   alignment: Alignment.bottomRight,
                   child: IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.bookmark_border),
+                    icon: const Icon(Icons.bookmark_border),
                   ),
                 ),
               ),
@@ -270,7 +272,7 @@ class _PostCardState extends State<PostCard> {
                 InkWell(
                   onTap: () {},
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 4),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Text(
                       'View all $commentLength comments',
                       style: const TextStyle(
@@ -281,7 +283,7 @@ class _PostCardState extends State<PostCard> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 4),
+                  padding: const EdgeInsets.symmetric(vertical: 4),
                   child: Text(
                     DateFormat.yMMMd().format(
                       widget.snap['datePublished'].toDate(),

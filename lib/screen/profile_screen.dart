@@ -1,6 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/resources/auth_methods.dart';
 import 'package:instagram_clone/resources/fire_store_methods.dart';
@@ -110,21 +111,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   children: [
                                     FirebaseAuth.instance.currentUser!.uid ==
                                             widget.uid
-                                        ? FollowButton(
-                                            backgroudColor:
-                                                mobileBackgroundColor,
-                                            borderColor: Colors.grey,
-                                            text: 'Sign Out',
-                                            textColor: primaryColor,
-                                            function: () async {
-                                              await AuthMethods().signOut();
-                                              Navigator.of(context)
-                                                  .pushReplacement(
-                                                      MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoginScreen(),
-                                              ));
-                                            },
+                                        ? Expanded(
+                                            child: FollowButton(
+                                              backgroudColor:
+                                                  mobileBackgroundColor,
+                                              borderColor: Colors.grey,
+                                              text: 'Sign Out',
+                                              textColor: primaryColor,
+                                              function: () async {
+                                                await AuthMethods().signOut();
+                                                Navigator.of(context)
+                                                    .pushReplacement(
+                                                        MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const LoginScreen(),
+                                                ));
+                                              },
+                                            ),
                                           )
                                         : isFollowing
                                             ? FollowButton(
@@ -219,11 +222,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             DocumentSnapshot snap =
                                 (snapshot.data! as dynamic).docs[index];
 
-                            return Container(
-                              child: Image(
-                                image: NetworkImage(snap['postUrl']),
-                                fit: BoxFit.cover,
-                              ),
+                            return Image(
+                              image: NetworkImage(snap['postUrl']),
+                              fit: BoxFit.cover,
                             );
                           });
                     })

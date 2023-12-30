@@ -9,9 +9,9 @@ import '../screen/feed_screen.dart';
 const webScreenSize = 600;
 
 List<Widget> homeScreenItems = [
- const FeedScreen(),
-const  SearchScreen(),
-const  AddPostScreen(),
- const Text('notification'),
+  const FeedScreen(),
+  const SearchScreen(),
+  const AddPostScreen(),
+  const Center(child: Text('No Notifications')),
   ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid),
 ];

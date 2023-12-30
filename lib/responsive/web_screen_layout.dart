@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +40,7 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
   // Animating Page
   void navigationTapped(int page) {
     pageController.jumpToPage(page);
-        setState(() {
+    setState(() {
       _page = page;
     });
   }
@@ -70,7 +72,7 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
         backgroundColor: mobileBackgroundColor,
         centerTitle: false,
         title: ColorFiltered(
-          colorFilter: ColorFilter.mode(primaryColor, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(primaryColor, BlendMode.srcIn),
           child: SvgPicture.asset(
             'assets/ic_instagram.svg',
             height: 32,
@@ -98,7 +100,6 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
               color: _page == 0 ? primaryColor : secondaryColor,
             ),
           ),
-          
           IconButton(
             onPressed: () => navigationTapped(3),
             icon: Icon(
@@ -116,11 +117,11 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
         ],
       ),
       body: PageView(
-        physics:const  NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         onPageChanged: onPageChanged,
-        children:  homeScreenItems,
-      ) ,
+        children: homeScreenItems,
+      ),
     );
   }
 }

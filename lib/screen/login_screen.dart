@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, override_on_non_overriding_member
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/resources/auth_methods.dart';
@@ -25,7 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -66,7 +67,8 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
           child: Container(
         padding: MediaQuery.of(context).size.width > webScreenSize
-            ?  EdgeInsets.symmetric(horizontal:  MediaQuery.of(context).size.width /3)
+            ? EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width / 3)
             : const EdgeInsets.symmetric(horizontal: 32),
         width: double.infinity,
         child: Column(
